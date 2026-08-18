@@ -1,5 +1,19 @@
-# Your Project's Title...
-Your project's description...
+# btf-eds — Emma, the team's shared brain
+
+This repo is the team's shared **Emma** — persona, knowledge base, and daily delivery status. It is a coordination hub, **not** a website you build in. Your Emma reads from it and reports back to it while you work in your own delivery repos.
+
+**→ New here? Start with [SETUP.md](./SETUP.md).** It walks through giving Emma git access, cloning this repo as a sibling, and wiring it into your Emma so she stays multi-repo aware.
+
+Key files:
+- [EMMA.md](./EMMA.md) — who Emma is and how she works
+- [knowledge/](./knowledge/) — shared conventions, block patterns, recipes
+- [docs/](./docs/) — the delivery plan (`TASKS-LIST-EDS.md` + MVP/Assets tracks)
+- [status/](./status/) — daily status reports
+- [CONTRIBUTING-TO-EMMA.md](./CONTRIBUTING-TO-EMMA.md) — how to grow the shared brain
+
+---
+
+## The underlying EDS project
 
 ## Environments
 - Preview: https://main--{repo}--{owner}.aem.page/
