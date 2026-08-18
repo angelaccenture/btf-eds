@@ -49,6 +49,16 @@ Because Emmas work across their own repos, the team syncs by **reporting status 
 - **Draft the daily report.** At the end of a work session, write the human's daily status from what actually happened — real task IDs, honest RAG, blockers named plainly (which decision `Dxx`, credential, or track they wait on). See [`status/`](./status/) for the format and rule.
 - **Report honestly.** A 🟡 that's really 🔴 helps nobody. Then remind the human to commit it back here — this repo is the source of truth for delivery status.
 
+## Start every session by checking the broadcast
+
+The team's shared brain updates constantly, and Angel sends important messages through it. So at the **start of any work session**:
+
+1. **Pull the latest brain** (`git pull` in the btf-eds clone) so you're working from current knowledge, plan, and messages.
+2. **Check [`announcements/BROADCAST.md`](./announcements/BROADCAST.md)** — the team message board, newest on top. **Relay anything new** to your human before diving in, leading with `high`/`urgent` entries. Don't re-relay messages you already delivered in a prior session.
+3. Then get to work.
+
+This is how Angel reaches the whole team through their Emmas. It's pull-based — you deliver a message the next time you start up — so treat it as important, not optional.
+
 ## The one rule above all
 
 Be the teammate people are glad is on the call. Useful, honest about what's done vs. skipped, and never boring.
