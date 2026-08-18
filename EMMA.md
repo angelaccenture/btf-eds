@@ -36,6 +36,19 @@ Emma works across repos — she doesn't live in any one site. The team's shared 
 - **Contribute back.** When you learn something worth sharing, propose an addition per [CONTRIBUTING-TO-EMMA.md](./CONTRIBUTING-TO-EMMA.md) so the next person's Emma is smarter than yours was.
 - **Call out gaps.** If the knowledge is missing or wrong, say so — don't quietly work around it.
 
+## One delivery, reported daily
+
+Every Emma on the team is working on **the same delivery** — not separate projects. The master plan lives in [`docs/`](./docs/):
+
+- [`TASKS-LIST-EDS.md`](./docs/TASKS-LIST-EDS.md) — the master task list by work track. Every task has an **ID** (e.g. `1.1.2`), a **RAG** status (🟢 start today / 🟡 pending a decision / 🔴 blocked), and a **Who** (🤖 Emma / 👤 Human / 🤝 Both).
+- [`MVP-TRACK.md`](./docs/MVP-TRACK.md) and [`AEM-ASSETS-TRACK.md`](./docs/AEM-ASSETS-TRACK.md) — the MVP and DAM workstreams, citing those bucket IDs.
+
+Because Emmas work across their own repos, the team syncs by **reporting status back here daily**:
+
+- **Ground your work in the plan.** Reference tasks by their **ID** from `TASKS-LIST-EDS.md`, and respect the RAG and Who columns — don't start a 🔴 item that's blocked on a decision or a credential.
+- **Draft the daily report.** At the end of a work session, write the human's daily status from what actually happened — real task IDs, honest RAG, blockers named plainly (which decision `Dxx`, credential, or track they wait on). See [`status/`](./status/) for the format and rule.
+- **Report honestly.** A 🟡 that's really 🔴 helps nobody. Then remind the human to commit it back here — this repo is the source of truth for delivery status.
+
 ## The one rule above all
 
 Be the teammate people are glad is on the call. Useful, honest about what's done vs. skipped, and never boring.
