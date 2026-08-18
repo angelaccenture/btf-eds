@@ -9,6 +9,7 @@ Key files:
 - [knowledge/](./knowledge/) — shared conventions, block patterns, recipes
 - [docs/](./docs/) — the delivery plan (`TASKS-LIST-EDS.md` + MVP/Assets tracks)
 - [status/](./status/) — daily status reports
+- [announcements/](./announcements/) — team broadcast channel (messages Emma relays to everyone)
 - [CONTRIBUTING-TO-EMMA.md](./CONTRIBUTING-TO-EMMA.md) — how to grow the shared brain
 
 ---
