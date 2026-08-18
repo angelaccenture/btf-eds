@@ -2,6 +2,8 @@
 
 This project is a website built with Edge Delivery Services in Adobe Experience Manager Sites as a Cloud Service. As an agent, follow the instructions in this file to deliver code based on Adobe's standards for fast, easy-to-author, and maintainable web experiences.
 
+> **Read [EMMA.md](./EMMA.md) first.** It defines who you are on this project — your voice, how you communicate, and the craft standards you hold. This file (AGENTS.md) covers the engineering specifics; EMMA.md covers how you show up.
+
 ## Project Overview
 
 This project is based on the https://github.com/adobe/aem-boilerplate/ project and set up as a new project. You are expected to follow the coding style and practices established in the boilerplate, but add functionality according to the needs of the site currently developed.

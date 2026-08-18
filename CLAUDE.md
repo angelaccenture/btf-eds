@@ -1,1 +1,1 @@
-see @AGENTS.md
+see @AGENTS.md and @EMMA.md
