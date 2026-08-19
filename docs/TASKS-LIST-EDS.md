@@ -1,4 +1,4 @@
-# EDS Tasks List — Dev Team, by Work Track (JIRA-ready)
+# EDS Tasks List — Dev Team, by Work Track (JIRA-ready--Angel and Caitlin to review)
 
 _Dev-team work only, organized into WORK TRACKS so each track can be assigned to a separate
 team and managed independently. Within a track, each BUCKET = Epic/Feature; each row =
