@@ -6,6 +6,40 @@ The whole trick to keeping your Emma smart (multi-repo aware, like she's meant t
 
 ---
 
+## Step 0 — Collaborator onboarding (first time only)
+
+Before anything else, you need **access to this repo** and a way for git to authenticate. Work through these in order — most "I can't connect" problems are one of the first three.
+
+### 0.1 — Get added as a collaborator
+An org admin adds you at `github.com/angelaccenture/btf-eds` → **Settings → Collaborators and teams → Add people** (Read is enough to pull; Write to push status/knowledge back). **Accept the invite** (email or `github.com/notifications`) — until you accept, the repo is invisible to you.
+
+### 0.2 — You probably don't need a token at all
+If your Emma tool has a git-credentials toggle (see Step 1), flip it and skip ahead — credentials are injected and you never make or paste a token. The fastest test: just ask your Emma to run `git clone https://github.com/angelaccenture/btf-eds.git`. **If it clones, you're done — go to Step 2.** Only if it prompts for auth do you need 0.3.
+
+### 0.3 — If you DO need a token: the "my repo isn't showing" fix
+When creating a **fine-grained** personal access token, the #1 mistake is the **Resource owner** dropdown:
+
+- Set **Resource owner: `angelaccenture`** (the org) — **not** your personal account. Under your own name, the org's repos never appear. This alone fixes most cases.
+- Then **Repository access → Only select repositories → btf-eds**. It only lists repos you can see, so if btf-eds is missing here, re-check 0.1 (invite accepted?).
+- If `angelaccenture` isn't in the Resource-owner dropdown at all, the **org requires token approval** — create it anyway (it goes pending) and an org admin approves it at **Org Settings → Personal access tokens → Pending requests**.
+- **Stuck on fine-grained? Use a classic token** with the `repo` scope — classic tokens filter by scope, not by a repo list, so btf-eds is reachable regardless of the dropdown.
+
+> Paste the token **only** into your tool's Settings (Step 1) — **never into the chat.** A secret pasted in chat is compromised; rotate it if that happens.
+
+### 0.4 — Where do the settings live? (it depends on your tool)
+The "LLM Permissions" screen below is specific to some Emma harnesses. If yours doesn't have it, git auth is handled elsewhere — the concept is the same, the menu differs:
+
+| Your tool | Git-credentials setting |
+|---|---|
+| Claude Code (CLI) | Settings → LLM Permissions → allow git credentials |
+| Claude Desktop | Settings → Connectors / permissions |
+| Web UI (claude.ai / Experience Modernization Agent) | Settings → connected accounts / permissions |
+| Cursor / VS Code | uses your local git auth — no extra screen; make sure `git clone` works in a terminal first |
+
+If you can't find it, the reliable fallback is: make sure `git clone https://github.com/angelaccenture/btf-eds.git` works in a plain terminal on your machine (that proves your git auth is good), then point your Emma at that local clone (Step 3).
+
+---
+
 ## Step 1 — Give Emma git access (do NOT paste a token in chat)
 
 Your Emma needs to clone this repo and push status back. She does **not** need you to paste a token into the conversation — ever. A pasted secret should be treated as compromised.
