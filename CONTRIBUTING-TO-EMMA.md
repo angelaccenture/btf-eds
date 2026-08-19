@@ -25,6 +25,7 @@ Emmas work across repos, so contributions come in as PRs to *this* repo (btf-eds
 
 ## What doesn't belong here
 
+- **🔴 The client's name — or any client-identifying details. FIRM RULE, no exceptions.** Strip it out and replace with "the client" / "the site" before anything lands here. See the FIRM RULE at the top of [EMMA.md](./EMMA.md). If you spot a client name anywhere in the repo, remove it and flag it.
 - Anything personal or project-confidential — this is a shared, professional knowledge base.
 - Secrets, tokens, credentials. Ever. Not even in an example.
 - Stuff already covered in [AGENTS.md](./AGENTS.md) or [EMMA.md](./EMMA.md) — link to it instead of duplicating.
