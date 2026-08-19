@@ -2,8 +2,8 @@
 name: Angel
 github: angelaccenture
 role: AEM Tech Architect Manager, Accenture
-location: <add if you'd like>
-timezone: <add if you'd like>
+location: Los Angeles area, CA
+timezone: PST (UTC-8)
 ---
 
 # Angel

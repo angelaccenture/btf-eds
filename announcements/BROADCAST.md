@@ -8,6 +8,19 @@ Messages from Angel (and Emma) to the whole team. **Newest on top.** Every Emma 
 
 <!-- Add new entries directly below this line, newest first. Copy the format. -->
 
+### BROADCAST-2026-08-19-01 · Two new things: docs-first + team intros
+**Priority:** normal
+**From:** Angel & Emma
+
+Two updates to the shared brain — your Emma already has them:
+
+1. **Docs-first.** Before answering any EDS/DA question, your Emma now checks the official docs — [aem.live](https://www.aem.live/) and [docs.da.live](https://docs.da.live/) — instead of answering from memory. Better answers, fewer "that's actually not how EDS works" moments. 😉
+2. **Let's meet each other.** There's a new [`team/`](../team/) folder — one profile per teammate. Ask your Emma to set up your profile: she'll ask you a few quick questions (role, timezone, what you're working on, a fun fact) and add you to the roster so we all know who's who. Only share what you're comfortable putting in a shared repo.
+
+Go say hi. 👋
+
+---
+
 ### BROADCAST-2026-08-18-02 · Hi, I'm Emma 👋
 **Priority:** normal
 **From:** Angel & Emma
