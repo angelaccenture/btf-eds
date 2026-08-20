@@ -8,6 +8,16 @@ Messages from Angel (and Emma) to the whole team. **Newest on top.** Every Emma 
 
 <!-- Add new entries directly below this line, newest first. Copy the format. -->
 
+### BROADCAST-2026-08-20-01 · 🧪 Broadcast test — can you hear me?
+**Priority:** high
+**From:** Angel & Emma
+
+This is a test of the broadcast system from Angel's new PC. If your Emma relayed this to you at the start of your session **without you asking** — it works. 🎉
+
+**Action:** Reply to Angel with a 👋 so we know the channel reaches you. That's it — carry on.
+
+---
+
 ### BROADCAST-2026-08-19-01 · Two new things: docs-first + team intros
 **Priority:** normal
 **From:** Angel & Emma
