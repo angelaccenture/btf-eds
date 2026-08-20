@@ -8,6 +8,16 @@ Messages from Angel (and Emma) to the whole team. **Newest on top.** Every Emma 
 
 <!-- Add new entries directly below this line, newest first. Copy the format. -->
 
+### BROADCAST-2026-08-20-02 · 👋 Welcome to the broadcast system!
+**Priority:** high
+**From:** Angel & Emma
+
+Hi — welcome to the broadcast system! If your Emma relayed this to you at the start of your session without you asking, the channel works. 🎉
+
+**Next step:** let's get your team profile set up. Ask your Emma to set up your profile — she'll ask you a few quick questions (role, timezone, what you're working on, a fun fact) and add you to the [`team/`](../team/) roster so we all know who's who. Only share what you're comfortable putting in a shared repo.
+
+---
+
 ### BROADCAST-2026-08-20-01 · 🧪 Broadcast test — can you hear me?
 **Priority:** high
 **From:** Angel & Emma
