@@ -14,14 +14,14 @@ Blocks · 4) Content Authoring & Migration · 5) Additional Integrations · 6) U
 ## Task 1 — Onboard to Existing Setup
 
 _Goal: every dev can run the inherited project locally, push a branch to preview, and edit
-in DA. No net-new build — get access, verify, learn._
+in Experience Workspace. No net-new build — get access, verify, learn._
 
 ### Sub-tasks (from sheet §1.1)
 | # | Sub-task | Sheet ID | MVP action |
 |---|---|---|---|
 | 1 | Dev prerequisites | 1.1.1 | Install Node/npm, Git, AEM CLI, Sidekick extension (each machine) |
 | 2 | Repo access | 1.1.2 · 1.1.5 | Get added to their GitHub repo + Code Sync (inherit, don't create) |
-| 3 | DA.live access | 1.1.8 | Get org/site permissions on their content source |
+| 3 | Experience Workspace access | 1.1.8 | Get org/site permissions on their content source |
 | 4 | Local dev running | 1.1.9 | `aem up` against their repo — confirm site runs locally |
 | 5 | Preview/live flow | 1.1.4 · 1.1.10 | Confirm branch → `.aem.page` / `.aem.live` works |
 | 6 | CI / quality gates | 1.1.6 · 1.1.7 | Learn their PR / lint / branching rules (adopt, don't rewrite) |
@@ -30,12 +30,12 @@ in DA. No net-new build — get access, verify, learn._
 ### Deliverables (Definition of Done)
 - [ ] Every dev can clone, run `aem up`, and see the site locally
 - [ ] Each dev can push a branch and see it preview at `.aem.page`
-- [ ] Team has DA.live edit access and can open/edit a page
-- [ ] Onboarding note in `/docs` (repo URL, DA org/site, conventions, who-to-ask)
+- [ ] Team has Experience Workspace edit access and can open/edit a page
+- [ ] Onboarding note in `/docs` (repo URL, EW org/site, conventions, who-to-ask)
 
 ### Decisions needed
 _Already made by the Adobe team — this task just needs them **confirmed + documented** at handover:_
-- **D1** authoring = DA.live · **D4/D5** delivery type + Cloud Manager · **D6** topology (single vs repoless)
+- **D1** authoring = Experience Workspace ✅ · **D4/D5** delivery type + Cloud Manager · **D6** topology (single vs repoless)
 - **D9** CDN · **D10** CSP model · **D38** live-preview on/off
 
 > ⚠️ The one genuine gate: are D1/D4/D5/D6/D9/D10 settled + written down, or must the client team
@@ -43,7 +43,7 @@ _Already made by the Adobe team — this task just needs them **confirmed + docu
 
 ### Requirements (inputs to unblock)
 - GitHub repo access (write) + Code Sync installed
-- DA.live entitlement + org/site permissions
+- Experience Workspace entitlement + org/site permissions
 - MVP page list + scope (which pages we're building)
 - Handover of Adobe team's conventions / block docs
 
@@ -62,7 +62,7 @@ of what's actually net-new for the MVP. **Reuse > extend (variant) > build-new.*
 | # | Sub-task | Sheet ID | MVP action |
 |---|---|---|---|
 | 1 | Inherit design tokens & base styles | 1.2.1 · 1.2.3 · 1.2.4 · 1.2.6 | Reuse Adobe team's tokens/breakpoints/fonts as-is; confirm they cover MVP designs |
-| 2 | Learn block architecture & conventions | 1.2.2 · 1.3.8 | Adopt their naming, DA.live format, `classes_`/`groupName_` conventions |
+| 2 | Learn block architecture & conventions | 1.2.2 · 1.3.8 | Adopt their naming, Experience Workspace format, `classes_`/`groupName_` conventions |
 | 3 | Inventory existing blocks | 1.2b.1 | Survey their library + Block Collection / foundation-kit before building anything |
 | 4 | Map MVP components → existing | 1.2b.2 | Per MVP component: **reuse as-is / extend (variant) / build-new** |
 | 5 | Extend OOTB / existing blocks | 1.3.2 · 1.3.4 | Add variants/style variations to cover MVP needs (no new block) |
@@ -102,7 +102,7 @@ of what's actually net-new for the MVP. **Reuse > extend (variant) > build-new.*
 
 _Goal: assemble the MVP pages from existing + extended blocks, and stand up the small set of
 page templates the MVP needs. Also finish the "build-new" gap blocks carried over from Task 2.
-EDS content model = **blocks + DA.live sheets/docs** (no CF — that's the Assets track)._
+EDS content model = **blocks + Experience Workspace sheets/docs** (no CF — that's the Assets track)._
 
 ### Sub-tasks (from sheet §1.3, §1.4)
 | # | Sub-task | Sheet ID | MVP action |
@@ -110,18 +110,18 @@ EDS content model = **blocks + DA.live sheets/docs** (no CF — that's the Asset
 | 1 | Build the gap blocks | 1.3.3 · 1.3.4 | Finish the "build-new" set from Task 2's gap list (only what reuse/variant can't cover) |
 | 2 | Implement MVP templates | 1.3.5 | Stand up the N page templates the MVP pages need (reuse their patterns first) |
 | 3 | Define EDS content structure | 1.4.1 | Blocks + document model for the MVP page types |
-| 4 | Structured content (only if needed) | 1.4.2 | DA JSON-Schema sheets for any list/collection content — skip if plain pages |
+| 4 | Structured content (only if needed) | 1.4.2 | EW JSON-Schema sheets for any list/collection content — skip if plain pages |
 | 5 | Feature blocks/utilities | 1.3.7 | Only MVP-required extras (e.g. social/OG meta); defer the rest |
-| 6 | Author enablement wiring | 1.4.4 · 1.4.5 | Sidekick roles + DA "Prepare" menu (Preflight on) — inherit their config |
+| 6 | Author enablement wiring | 1.4.4 · 1.4.5 | Sidekick roles + EW "Prepare" menu (Preflight on) — inherit their config |
 
 ### Deliverables (Definition of Done)
 - [ ] Gap blocks built, a11y-checked, in the library
 - [ ] MVP page templates working in preview
 - [ ] Content model documented (block + sheet structure per MVP page type)
-- [ ] Author can assemble an MVP page in DA end-to-end
+- [ ] Author can assemble an MVP page in EW end-to-end
 
 ### Decisions needed
-- **D15** structured content: DA JSON-Schema vs AEM CF (per type) — MVP default: **DA sheets**
+- **D15** structured content: EW JSON-Schema vs AEM CF (per type) — MVP default: **EW sheets**
 - **D2/D6/D7** authoring/topology/design (inherited from Adobe team)
 - **D34/D35** Preflight + Schedule-Publish posture (inherit)
 
@@ -138,16 +138,16 @@ EDS content model = **blocks + DA.live sheets/docs** (no CF — that's the Asset
 
 ## Task 4 — Content Authoring & Migration
 
-_Goal: get the MVP pages' content into DA — authored fresh and/or migrated from legacy.
-**Media stays lightweight (DA-referenced images); NO DAM / AEM Assets work** — that's the
+_Goal: get the MVP pages' content into Experience Workspace — authored fresh and/or migrated from legacy.
+**Media stays lightweight (EW-referenced images); NO DAM / AEM Assets work** — that's the
 separate Assets track that integrates in later._
 
 ### Sub-tasks (from sheet §1.4, Track 5)
 | # | Sub-task | Sheet ID | MVP action |
 |---|---|---|---|
-| 1 | Author MVP pages in DA | 1.4.x | Build the MVP pages from templates + blocks in DA |
-| 2 | Migrate legacy content (if any) | 5.2 · 5.5 | Bulk import via DA Source API + transform, per MVP page set |
-| 3 | Lightweight media | — | Reference images directly in DA media; no Assets/DAM pipeline |
+| 1 | Author MVP pages in EW | 1.4.x | Build the MVP pages from templates + blocks in EW |
+| 2 | Migrate legacy content (if any) | 5.2 · 5.5 | Bulk import via the Source API (`admin.da.live`) + transform, per MVP page set |
+| 3 | Lightweight media | — | Reference images directly in EW media; no Assets/DAM pipeline |
 | 4 | Migrate redirect rules | 5.4 | Old→new URL map for the MVP pages (feeds Task 6 SEO) |
 | 5 | Content parity check | 5.6 | Reconcile migrated pages vs. source |
 | 6 | Content mapping doc | 5.7 | Record source→EDS mapping for the MVP set |
@@ -249,7 +249,7 @@ checklist + plumbing (CDN, DNS). Reuse their runbook; don't invent one._
 | # | Sub-task | Sheet ID | MVP action |
 |---|---|---|---|
 | 1 | Functional + smoke tests | 6.1.1 · 6.1.2 | Test MVP journeys; smoke suite per release |
-| 2 | Preflight QA | 6.1.3 | DA-native always-on QA on MVP pages |
+| 2 | Preflight QA | 6.1.3 | EW-native always-on QA on MVP pages |
 | 3 | Accessibility test + fix | 6.1.6 | WCAG 2.1 AA pass on MVP pages |
 | 4 | Cross-browser / device | 6.1.7 | Chrome/Edge/Safari + tablet/mobile on MVP pages |
 | 5 | Performance testing | 6.1.9 · 6.2.5 | Lighthouse 100 mobile+desktop, pre + post go-live |
@@ -280,7 +280,7 @@ checklist + plumbing (CDN, DNS). Reuse their runbook; don't invent one._
 
 | From Adobe team (reuse) | Net-new for MVP team |
 |---|---|
-| Provisioned env, repo, Code Sync, DA.live, preview/live | Onboarding + access |
+| Provisioned env, repo, Code Sync, Experience Workspace, preview/live | Onboarding + access |
 | Design system / tokens + base block library | Gap blocks + variants |
 | Go-live plumbing (CDN, redirects, headers), perf gate, analytics/SEO patterns | MVP templates, content, MVP-scoped integrations, apply analytics/SEO/QA to MVP pages |
 
