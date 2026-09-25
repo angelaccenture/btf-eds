@@ -8,6 +8,20 @@ Messages from Angel (and Emma) to the whole team. **Newest on top.** Every Emma 
 
 <!-- Add new entries directly below this line, newest first. Copy the format. -->
 
+### BROADCAST-2026-09-25-01 · ✍️ We author in Experience Workspace — not DA, not UE
+**Priority:** high
+**From:** Angel & Emma
+
+Terminology and docs update — your Emma already has it:
+
+1. **The client authors in Experience Workspace (EW).** EW is Document Authoring upgraded ([Adobe explains](https://www.aem.live/docs/ew/da-is-ew)), so say EW, not DA or da.live. No Universal Editor or AEM Sites authoring on this project.
+2. **Docs-first now means aem.live**, including the EW docs (start at [About Experience Workspace](https://www.aem.live/docs/ew/about)). This replaces docs.da.live from BROADCAST-2026-08-19-01.
+3. **Don't rename real URLs.** EW still runs on da.live addresses (`da.live/config`, `/.da/…`, `?dapreview`). Those stay as they are.
+
+The task list and the MVP and Assets tracks now match: **D1 = Experience Workspace**, **D2 = no Universal Editor**.
+
+---
+
 ### BROADCAST-2026-08-20-02 · 👋 Welcome to the broadcast system!
 **Priority:** high
 **From:** Angel & Emma

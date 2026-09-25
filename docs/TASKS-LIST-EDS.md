@@ -10,27 +10,27 @@ candidate Story/Sub-task once requirements land._
 
 **Who:** 🤖 **Emma** = I can generate/do it (code, config, scaffolding, blocks, schemas, migration tooling, docs) · 👤 **Human** = infra/credentials/sign-offs/client-owned · 🤝 **Both** = I draft, human decides/reviews (design, architecture, integrations, testing strategy).
 
-**Readiness (RAG):** 🟢 **Green** = dev can start TODAY (foundation; DA.live/EDS already decided) · 🟡 **Yellow** = pending a decision/scope call (has a recommendation) · 🔴 **Red** = blocked on environment, a decision, reqs, or a dependency. _Most items are Red — you can't build blocks/templates/content until the environment exists and gating decisions land._
+**Readiness (RAG):** 🟢 **Green** = dev can start TODAY (foundation; Experience Workspace/EDS already decided) · 🟡 **Yellow** = pending a decision/scope call (has a recommendation) · 🔴 **Red** = blocked on environment, a decision, reqs, or a dependency. _Most items are Red — you can't build blocks/templates/content until the environment exists and gating decisions land._
 
 _The **🔑 Decisions Log is at the BOTTOM** (referenced by the `dec: Dxx` column in each track)._
 
 **Work tracks:**
 - **TRACK 1 — EDS Platform & Front-End** (git-driven; no servers)
 - **TRACK 2 — AEM Assets (Standard / AEMaaCS)** (author/publish, Cloud Manager, dispatcher)
-- **TRACK 3 — EDS ↔ AEM Assets Bridge** (DA.live config; connects Track 1 ↔ Track 2)
+- **TRACK 3 — EDS ↔ AEM Assets Bridge** (EW config; connects Track 1 ↔ Track 2)
 - **TRACK 4 — Integrations** (one system per ticket)
 - **TRACK 5 — Content Migration** (execution)
 - **TRACK 6 — Quality, Testing & Go-Live**
 - **TRACK 7 — Platform Security & DevOps (shared)**
 
-> Note: Content Modeling splits by track — EDS uses **blocks + DA.live sheets/docs** (Track 1);
+> Note: Content Modeling splits by track — EDS uses **blocks + Experience Workspace sheets/docs** (Track 1);
 > AEM Assets uses **Content Fragment Models / structured content** (Track 2). They are different work.
 
 ═══════════════════════════════════════════════════════════════════════════
 # TRACK 1 — EDS Platform & Front-End
 > 🔑 **Decisions:** D1–D12 (authoring, UE commitment, delivery type, CM register, topology/repoless, design source, headless, CDN, CSP, protect-preview) · D41 (restricted regions) · D42 (dynamic/large → BYOM) — see Decisions Log (bottom).
-> 🔒 **Pre-reqs:** Adobe contract signed · GitHub org + Code Sync app · DA.live org/site created
-_Git-driven. Branch-based preview (`.aem.page`) / live (`.aem.live`) + DA.live source. No author/publish/dispatcher servers._
+> 🔒 **Pre-reqs:** Adobe contract signed · GitHub org + Code Sync app · Experience Workspace org/site created
+_Git-driven. Branch-based preview (`.aem.page`) / live (`.aem.live`) + Experience Workspace source. No author/publish/dispatcher servers._
 
 ## 1.1 — EDS Environments & DevOps Foundation
 
@@ -39,11 +39,11 @@ _Git-driven. Branch-based preview (`.aem.page`) / live (`.aem.live`) + DA.live s
 | 1.1.1 | Dev prerequisites | Node.js + npm · Git · GitHub account · AEM CLI global · Sidekick extension | 🟢 | 🤝 Both | — |
 | 1.1.2 | EDS project scaffolding | GitHub repo from `adobe/aem-boilerplate` | 🟢 | 🤖 Emma | — |
 | 1.1.3 | Front-end build step _(only if heavy deps)_ | Bundle step for heavy deps (e.g. esbuild for Lit) — EDS is buildless by default; NOT a generic build pipeline (Sitecore/SPA assumption; only real if bundling a dep). | 🟡 | 🤖 Emma | if heavy deps used |
-| 1.1.4 | Branch-based preview/live flow | Configure preview (`.aem.page`) / live (`.aem.live`) | 🟡 | 🤝 Both | dep: Code Sync + DA.live org/site live |
+| 1.1.4 | Branch-based preview/live flow | Configure preview (`.aem.page`) / live (`.aem.live`) | 🟡 | 🤝 Both | dep: Code Sync + EW org/site live |
 | 1.1.5 | Code Sync app | Install GitHub ↔ AEM Code Sync on repo | 🟢 | 🤝 Both | — |
 | 1.1.6 | CI for code | Lint/test on PR + branching strategy + guardrails | 🟢 | 🤖 Emma | — |
 | 1.1.7 | Code quality metrics gate | — | 🟢 | 🤖 Emma | — |
-| 1.1.8 | DA.live content source setup | Create org/site content source | 🟡 | 🤝 Both | dep: DA.live entitlement/access (pre-req) |
+| 1.1.8 | Experience Workspace content source setup | Create org/site content source | 🟡 | 🤝 Both | dep: Experience Workspace entitlement/access (pre-req) |
 | 1.1.9 | Local dev environment | aem-cli / `aem up` | 🟢 | 🤖 Emma | docs: tech |
 | 1.1.10 | Live-preview wiring | `?dapreview` IIFE in scripts.js + CORS for `*.preview.da.live` | 🟢 | 🤖 Emma | dec: D38 |
 | 1.1.11 | Config Service migration | query.yaml · sitemap.yaml · headers.json · access.json · sidekick.json (replaces .helix/*) | 🟡 | 🤖 Emma | docs: tech |
@@ -55,14 +55,14 @@ _Git-driven. Branch-based preview (`.aem.page`) / live (`.aem.live`) + DA.live s
 | 1.1.17 | Push invalidation setup + test | Per BYO CDN (Akamai/Cloudflare/Fastly) | 🟡 | 🤝 Both | dec: D9 |
 | 1.1.18 | Placeholders | Spreadsheet-driven UI copy | 🟢 | 🤖 Emma | — |
 
-_(dep: Git repo + Code Sync + DA.live org/site)_
+_(dep: Git repo + Code Sync + EW org/site)_
 
 ## 1.2 — Design System & FED Foundation
 
 | ID | Item | Description | RAG | Who | Dep / Decision |
 |---|------|-------------|:--:|:--:|---|
 | 1.2.1 | Extract brand tokens → EDS CSS custom properties | From UI Kit / design system | 🔴 | 🤖 Emma | reqs: design system · dec: D7 · docs: tech |
-| 1.2.2 | EDS block architecture design | library, reuse candidates, naming, DA.live format | 🔴 | 🤖 Emma | dec: D6, D7 · docs: tech |
+| 1.2.2 | EDS block architecture design | library, reuse candidates, naming, Experience Workspace format | 🔴 | 🤖 Emma | dec: D6, D7 · docs: tech |
 | 1.2.3 | Multi-brand reusable architecture + theme-based styling | (CSS vars / block classes / theme tokens) | 🔴 | 🤝 Both | dec: D7, D6 · docs: tech |
 | 1.2.4 | Responsive breakpoints baseline | — | 🔴 | 🤝 Both | — |
 | 1.2.5 | Accessibility-compliant baseline for blocks | (WCAG 2.1 AA) | 🔴 | 🤖 Emma | — |
@@ -94,26 +94,26 @@ _Emma accelerates: I can run the inventory (Block Collection search, scan repos/
 | 1.3.5 | Implement N reusable templates  ⚠️ needs-reqs | (template count) | 🔴 | 🤖 Emma | reqs:template count · dec: D6, D7 |
 | 1.3.6 | Block library governance + versioning | (shared-libs / provider model) | 🔴 | 🤖 Emma | dec: D6, D7 · docs: biz |
 | 1.3.7 | Feature blocks/utilities as needed | RSS feed (index/spreadsheet-driven) · Open Graph / social-sharing meta · page-deletion/unpublish process | 🔴 | 🤖 Emma | — |
-| 1.3.8 | Block-authoring conventions | model docs before UE models · `classes_` prefix → CSS classes · `groupName_` field grouping · infer props from context · never override max-cells linter | 🔴 | 🤖 Emma | dec: D2, D6, D7 · docs: tech |
+| 1.3.8 | Block-authoring conventions | `classes_` prefix → CSS classes · `groupName_` field grouping · infer props from context · never override max-cells linter | 🔴 | 🤖 Emma | dec: D2, D6, D7 · docs: tech |
 
 
 ## 1.4 — EDS Content Modeling & Authoring
-> 🔑 **Decision:** Authoring method (DA / UE / EW) · Structured content: **DA JSON-Schema vs AEM CF** (per content type) · Approval workflow needed (Request Publish)?
-_EDS content model = blocks + DA.live sheets/docs (NOT CF Models — that's Track 2)._
+> 🔑 **Decision:** Authoring method ✅ **Experience Workspace** (D1) · Structured content: **EW JSON-Schema vs AEM CF** (per content type) · Approval workflow needed (Request Publish)?
+_EDS content model = blocks + Experience Workspace sheets/docs (NOT CF Models — that's Track 2)._
 
 | ID | Item | Description | RAG | Who | Dep / Decision |
 |---|------|-------------|:--:|:--:|---|
 | 1.4.1 | Define EDS content structure | (blocks + document model)  ⚠️ needs-reqs (content architecture) | 🔴 | 🤝 Both | reqs:content architecture · docs: biz |
-| 1.4.2 | DA-native structured content (WITHOUT AEM CF): design JSON Schema in Schema Editor (`/.da/forms/schemas/`) · set `editor.path`→`da.live/form#` · fetch JSON in blocks · `helix-query.yaml` index · delivered via da-sc worker  ⚠️ needs-reqs (decide: DA vs AEM CF | see Parking Lot) | 🔴 | 🤖 Emma | reqs:decide: DA vs AEM CF — see Parking Lot · dec: D15, D13, D25, D26 · docs: tech |
-| 1.4.3 | Universal Editor enablement + component-level UE integration | (component-models/definitions/filters.json) | 🔴 | 🤝 Both | dec: D2, D6, D7, D19 · docs: tech |
+| 1.4.2 | EW-native structured content (WITHOUT AEM CF): design JSON Schema in Schema Editor (`/.da/forms/schemas/`) · set `editor.path`→`da.live/form#` · fetch JSON in blocks · `helix-query.yaml` index · delivered via da-sc worker  ⚠️ needs-reqs (decide: EW vs AEM CF | see Parking Lot) | 🔴 | 🤖 Emma | reqs:decide: EW vs AEM CF — see Parking Lot · dec: D15, D13, D25, D26 · docs: tech |
+| 1.4.3 | ~~Universal Editor enablement + component-level UE integration~~ **Out of scope:** no Universal Editor (D2) | (component-models/definitions/filters.json) | — | — | dec: D2 |
 | 1.4.4 | Author authentication via Sidekick + roles/permissions | — | 🔴 | 🤝 Both | docs: tech |
-| 1.4.5 | DA "Prepare" menu config | Preflight (QA, always-on) · Schedule Publish (feature-flag row) | 🔴 | 🤝 Both | dec: D34, D35 |
+| 1.4.5 | EW "Prepare" menu config | Preflight (QA, always-on) · Schedule Publish (feature-flag row) | 🔴 | 🤝 Both | dec: D34, D35 |
 | 1.4.6 | Request Publish approval workflow (EA) | Adobe Eng onboarding · plugin + Inbox app · `publish-workflow-config` | 🔴 | 🤝 Both | dec: D18 · docs: biz |
 | 1.4.7 | Send-to-Adobe-Target (EA) | Developer Console Target API · `adobe-target` sheet · prepare-menu row | 🔴 | 🤝 Both | dec: D23 |
 | 1.4.8 | Media Library enablement | write access to `/.da/media-library` · bulk index for pre-Feb-2026 content | 🔴 | 🤝 Both | dec: D36 |
 | 1.4.9 | Author sandbox / training environment | — | 🔴 | 🤝 Both | docs: tech |
 
-> _NOTE: DA-native apps (bulk-operations · content-tree/Traverse · snapshots · translation-projects · version history) are OOTB — author enablement, NOT dev build_
+> _NOTE: EW-native apps (bulk-operations · content-tree/Traverse · snapshots · translation-projects · version history) are OOTB — author enablement, NOT dev build_
 
 ## 1.5 — SEO / Technical Web Standards
 
@@ -167,9 +167,9 @@ _EDS content model = blocks + DA.live sheets/docs (NOT CF Models — that's Trac
 
 ═══════════════════════════════════════════════════════════════════════════
 # TRACK 2 — AEM Assets (Standard / AEMaaCS)
-> 🔑 **GATING decision:** ✅ **AEM Assets IS the DAM (D13 = Yes, 2026-08-13)** → Tracks 2 & 3 are IN scope. · **Dynamic Media** yes/no? → 🟡 **TBD (D14)** · **CF** in scope (vs DA structured content)? · **Asset delivery: Media Bus (copy in) vs keep-in-DAM-CDN (rewrite at decoration)?**
+> 🔑 **GATING decision:** ✅ **AEM Assets IS the DAM (D13 = Yes, 2026-08-13)** → Tracks 2 & 3 are IN scope. · **Dynamic Media** yes/no? → 🟡 **TBD (D14)** · **CF** in scope (vs EW structured content)? · **Asset delivery: Media Bus (copy in) vs keep-in-DAM-CDN (rewrite at decoration)?**
 > 🔒 **Track pre-reqs:** Adobe contract/licensing · Cloud Manager access · data-residency region confirmed
-_Traditional Cloud Service infra. ✅ AEM Assets IS the DAM (D13 = Yes) → this track is active. Ref: docs.da.live/administrators/guides/setup-aem-assets_
+_Traditional Cloud Service infra. ✅ AEM Assets IS the DAM (D13 = Yes) → this track is active. Ref: aem.live/docs/ew/administering/set-up-aem-assets_
 
 ## 2.1 — AEM Assets Environments & DevOps Foundation
 _Follows Adobe AEMaaCS onboarding journey. NOTE: IMS product profiles ≠ AEM-level groups —
@@ -190,7 +190,7 @@ two SEPARATE permission layers (common mistake). Sequence matters (program → e
 | 2.1.11 | SSO / IMS wiring | — | 🔴 | 👤 Human | docs: tech |
 | 2.1.12 | IMS technical accounts / API + service credentials | (Adobe Developer Console) · local dev token | 🔴 | 👤 Human | docs: tech |
 | 2.1.13 | Dispatcher configuration | — | 🔴 | 👤 Human | docs: tech |
-| 2.1.14 | Env var `ADOBE_PROVIDED_CLIENT_ID = darkalley` | (enables DA.live connection; ~10–20 min restart) | 🔴 | 👤 Human | — |
+| 2.1.14 | Env var `ADOBE_PROVIDED_CLIENT_ID = darkalley` | (enables the Experience Workspace connection; ~10–20 min restart) | 🔴 | 👤 Human | — |
 
 _(dep: Adobe contract signed; Cloud Manager access)_
 
@@ -231,7 +231,7 @@ _AEM workflow-engine features — NOT EDS._
 | ID | Item | Description | RAG | Who | Dep / Decision |
 |---|------|-------------|:--:|:--:|---|
 | 2.4.1 | Authoring / approval / publishing workflows | (config)  ⚠️ needs-reqs (workflow definition) | 🔴 | 🤝 Both | reqs:workflow definition · docs: biz |
-| 2.4.2 | Multi-Site Management setup ⚠️ (if bilingual/MSM in scope) | decide DA-MSM (base+satellite, EA) vs AEM MSM | 🟡 | 🤝 Both | dec: D6, D24 · docs: tech |
+| 2.4.2 | Multi-Site Management setup ⚠️ (if bilingual/MSM in scope) | decide EW MSM (base+satellite, EA) vs AEM MSM | 🟡 | 🤝 Both | dec: D6, D24 · docs: tech |
 | 2.4.3 | Asset lifecycle automation | (archival, retirement, versioning) | 🔴 | 🤝 Both | dec: D13 |
 | 2.4.4 | Publishing schedule automation | — | 🔴 | 🤝 Both | — |
 | 2.4.5 | User group management & permissions | — | 🔴 | 🤝 Both | — |
@@ -245,15 +245,15 @@ _AEM workflow-engine features — NOT EDS._
 # TRACK 3 — EDS ↔ AEM Assets Bridge
 > 🔑 **Decision:** ✅ Bridge IS in scope (AEM Assets = DAM, D13). · Author mode vs Delivery mode (`author-`/`delivery-` repo prefix)? · Dynamic Media delivery on/off? 🟡 **TBD (D14)**
 > 🔒 **Pre-reqs:** Track 2 provisioned · `ADOBE_PROVIDED_CLIENT_ID=darkalley` set · assets published/approved
-_DA.live-side wiring that lets EDS consume AEM Assets. No servers — config keys only.
-Ref: docs.da.live/administrators/guides/setup-aem-assets_
+_Experience Workspace-side wiring that lets EDS consume AEM Assets. No servers — config keys only.
+Ref: aem.live/docs/ew/administering/set-up-aem-assets_
 
 | ID | Item | Description | RAG | Who | Dep / Decision |
 |---|------|-------------|:--:|:--:|---|
-| 3.1 | Set `aem.repositoryId` in da.live/config | (prefix `author-`/`delivery-` sets mode) | 🔴 | 🤝 Both | docs: tech |
+| 3.1 | Set `aem.repositoryId` in the EW config (`da.live/config`) | (prefix `author-`/`delivery-` sets mode) | 🔴 | 🤝 Both | docs: tech |
 | 3.2 | Optional | `aem.assets.prod.origin` · `aem.assets.prod.basepath` (default `/adobe/assets`) | 🔴 | 🤝 Both | — |
 | 3.3 | Optional | `aem.assets.image.type=link` · `aem.asset.dm.delivery=on` · `aem.asset.smartcrop.select=on` · `aem.asset.mime.renditions` | 🔴 | 🤝 Both | — |
-| 3.4 | Verify EDS/DA inserts + renders published assets via Delivery API (OpenAPI) | NOT legacy /content/dam/ URLs | 🔴 | 🤝 Both | dec: D13 · docs: tech |
+| 3.4 | Verify EDS/EW inserts + renders published assets via Delivery API (OpenAPI) | NOT legacy /content/dam/ URLs | 🔴 | 🤝 Both | dec: D13 · docs: tech |
 | 3.5 | Cloud-Manager technical account | read access to asset folders (map cloud config to `/conf/<site>`) | 🔴 | 👤 Human | dec: D13 |
 | 3.6 | AEM Assets Sidekick plugin | `asset-library` block in sidekick config (asset-selector URL, filters, domain mapping) | 🔴 | 🤖 Emma | dec: D6, D7, D13 · docs: tech |
 | 3.7 | Processing profiles | (img 2000×2000 q100 · video MP4) + 20MB limit; reprocess | 🔴 | 🤝 Both | docs: tech |
@@ -290,7 +290,7 @@ _One system per ticket. ⚠️ needs-reqs: exact integration list from business.
 | ID | Item | Description | RAG | Who | Dep / Decision |
 |---|------|-------------|:--:|:--:|---|
 | 5.1 | EMA configured & run | (migration accelerator) | 🔴 | 🤖 Emma | dec: D25, D26 |
-| 5.2 | Bulk migration tooling | DA Source API + `crawl()`/update-tree (import, transform via DOMParser, POST back) | 🔴 | 🤖 Emma | dec: D25, D26 · docs: tech |
+| 5.2 | Bulk migration tooling | Source API (`admin.da.live`) + `crawl()`/update-tree (import, transform via DOMParser, POST back) | 🔴 | 🤖 Emma | dec: D25, D26 · docs: tech |
 | 5.3 | Content overlays / BYOM for dynamic/large content (13k+ pages, no manual authoring) | external markup service → EDS-semantic HTML; register overlay + markup URL via Admin API; return real 200/404 (NOTE: folder-mapping is DEPRECATED — use overlays) | 🔴 | 🤖 Emma | dec: D25, D26 · docs: tech |
 | 5.4 | Migrate legacy redirect rules | (feeds Track 1.5 redirects) | 🔴 | 🤝 Both | — |
 | 5.5 | Content migration execution | (per site/wave)  ⚠️ needs-reqs (page/asset volumes) | 🔴 | 🤝 Both | reqs:page/asset volumes · dec: D13, D25, D26 · docs: tech |
@@ -311,7 +311,7 @@ _One system per ticket. ⚠️ needs-reqs: exact integration list from business.
 |---|------|-------------|:--:|:--:|---|
 | 6.1.1 | Functional testing | — | 🔴 | 🤝 Both | — |
 | 6.1.2 | Sanity test suite | (smoke tests per release) | 🔴 | 🤖 Emma | — |
-| 6.1.3 | Preflight QA (DA-native, always-on | config in Track 1.4) | 🔴 | 🤖 Emma | dec: D34 |
+| 6.1.3 | Preflight QA (EW-native, always-on | config in Track 1.4) | 🔴 | 🤖 Emma | dec: D34 |
 | 6.1.4 | Automation testing | (e.g. Selenium; AI-assisted scripts) | 🔴 | 🤖 Emma | — |
 | 6.1.5 | Visual Regression Testing | (VRT) | 🔴 | 🤝 Both | — |
 | 6.1.6 | Accessibility testing + remediation loop | — | 🔴 | 🤝 Both | — |
@@ -337,7 +337,7 @@ _Follows Adobe official go-live checklist (see master doc)._
 | 6.2.7 | Notify Adobe engineering on-call | (aemgolives@adobe.com) | 🔴 | 👤 Human | — |
 | 6.2.8 | DNS cutover runbook + freeze window | — | 🔴 | 👤 Human | dep: client IT Ops · docs: tech |
 | 6.2.9 | Rollback plan | (+ RTO/RPO targets) | 🔴 | 🤝 Both | dec: D30 · docs: tech |
-| 6.2.10 | Disaster recovery approach | DA auto-versioning · `/.trash` restore · re-import from aem.live/aem.page (ref: docs.da.live/administrators/reference/disaster-recovery) | 🔴 | 🤝 Both | dec: D30 · docs: tech |
+| 6.2.10 | Disaster recovery approach | EW auto-versioning · `/.trash` restore · re-import from aem.live/aem.page (ref: aem.live/docs/ew/authoring/version-history · aem.live/docs/operations · legacy: docs.da.live/administrators/reference/disaster-recovery) | 🔴 | 🤝 Both | dec: D30 · docs: tech |
 | 6.2.11 | Google Search Console monitoring post-launch | — | 🔴 | 🤝 Both | — |
 
 
@@ -382,7 +382,7 @@ Decisions live in the **Decisions Log** (bottom) — not repeated here._
 
 > Scope/approach **decisions** live in the **Decisions Log** at the bottom (D13, D14, D15, D18, D19, D21, D23, D24).
 > ✅ **Resolved: D13 — AEM Assets IS the DAM (2026-08-13)**, so Tracks 2 & 3 are in scope.
-> Still open: Dynamic Media? (D14) · Content Hub? · structured-content DA-vs-CF? (D15) · MSM? · Target/Experimentation? · Request Publish? · integration list? · analytics stack?
+> Still open: Dynamic Media? (D14) · Content Hub? · structured-content EW-vs-CF? (D15) · MSM? · Target/Experimentation? · Request Publish? · integration list? · analytics stack?
 
 ═══════════════════════════════════════════════════════════════════════════
 # 🔑 DECISIONS LOG — answer BEFORE starting each track
@@ -391,22 +391,22 @@ its track. **⛔ = gating** (blocks a whole track). **💡 Emma's Rec** = our de
 (client can override). Fill Decision + Date as they land._
 
 ### DT-A — Authoring & Editing
-_How authors create/edit/approve content. Drives Track 1 (+2 if UE)._
-_Related DA.live-feature decisions living in other tracks: **D23** (Send-to-Adobe-Target, DT-E)._
+_How authors create/edit/approve content. Drives Track 1._
+_Related Experience Workspace feature decisions living in other tracks: **D23** (Send-to-Adobe-Target, DT-E)._
 
 | # | Decision | Options | Gating? | Track | 💡 Emma's Rec (why) | Decision | Date |
 |---|----------|---------|:---:|:---:|---|---|---|
-| D1 | **Authoring method** | DA.live / Universal Editor / Experience Workspace | ⛔ | 1 | **DA.live** — fastest, no AEM instance, fits our foundation-kit; UE only if in-context WYSIWYG is a hard requirement | | |
-| D2 | **UE commitment** — UE needs AEMaaCS + AEM Site + xwalk | UE vs document/DA | ⛔ | 1,2 | **Document/DA** unless client already owns AEMaaCS + wants in-context editing (UE = big infra + xwalk cost) | | |
-| D3 | **Content source** | DA.live / SharePoint / Google Drive | ⛔ | 1 | **DA.live** — purpose-built, versioning, apps, no O365/Drive licensing friction | ✅ **DA.live** | |
-| D18 | **Approval workflow?** _(DA.live feature)_ | Request Publish (EA) / none | | 1 | **Request Publish** if governance/regulated (pharma/finance); none for small trusted author teams. _Also a DA.live feature — belongs with D34–D40; pairs with D37 Snapshots/Reviews_ | | |
+| D1 | **Authoring method** | Experience Workspace / Universal Editor | ⛔ | 1 | **Experience Workspace** — Document Authoring upgraded (visual editor + AI Assistant), no AEM instance, fits our foundation-kit | ✅ **Experience Workspace** | 2026-09-25 |
+| D2 | **UE commitment** — UE needs AEMaaCS + AEM Site + xwalk | UE vs Experience Workspace | ⛔ | 1,2 | **Experience Workspace** — its visual editor gives in-context editing without UE's infra + xwalk cost | ✅ **No Universal Editor** | 2026-09-25 |
+| D3 | **Content source** | Experience Workspace / SharePoint / Google Drive | ⛔ | 1 | **Experience Workspace** — purpose-built, versioning, apps, no O365/Drive licensing friction | ✅ **Experience Workspace** (was recorded as DA.live; same product, upgraded) | 2026-09-25 |
+| D18 | **Approval workflow?** _(Experience Workspace feature)_ | Request Publish (EA) / none | | 1 | **Request Publish** if governance/regulated (pharma/finance); none for small trusted author teams. _Also an Experience Workspace feature — belongs with D34–D40; pairs with D37 Snapshots/Reviews_ | | |
 | D34 | **Preflight (pre-live checklist)** | On / off · default vs custom checks | | 1 | **On** — always-on QA gate (SEO titles/desc, H1, broken/unpublished refs, placeholder text, a11y); customize checks per client. Cheap, catches launch-blockers | | |
 | D35 | **Schedule Publish** | On / off | | 1 | **On** if authors need future-dated publishing (campaigns); off for always-manual sites | | |
 | D36 | **Media Library** | On / off | | 1 | **On** — central asset browse/insert + usage/alt-text; note pre-Feb-2026 content needs a bulk index | | |
 | D37 | **Snapshots / Reviews (content staging)** | On / off | | 1 | **On** if coordinated/time-sensitive launches or review-before-publish needed; pairs with D18 | | |
 | D38 | **Live Preview** | On / off | | 1 | **On** — real-time in-context preview; small dev task (`?dapreview` IIFE + CORS). Big author QoL win | | |
 | D39 | **Quick Edit** | On / off | | 1 | **On** — in-context visual edit on aem.page; low lift via Sidekick/Author Kit | | |
-| D40 | **Authoring Library setup** | Blocks/templates/icons/placeholders | | 1 | **Yes** — build the DA Library so authors self-serve blocks/templates; core to the self-service model | | |
+| D40 | **Authoring Library setup** | Blocks/templates/icons/placeholders | | 1 | **Yes** — build the EW Library so authors self-serve blocks/templates; core to the self-service model | | |
 
 ### DT-B — Platform, Topology & Delivery
 _Where/how EDS runs and is delivered. Drives Track 1 & 7._
@@ -418,7 +418,7 @@ _Where/how EDS runs and is delivered. Drives Track 1 & 7._
 | D6 | **Site topology** | Single vs multi-brand / **repoless** | ⛔ | 1 | **Repoless** if >1 site/brand (Adobe-native libs model; only 1st site needs a repo); single otherwise | | |
 | D9 | **CDN** | Adobe-managed Fastly vs BYO | ⛔ | 1,7 | **Adobe-managed Fastly** (in-license, zero setup). BYO only if client mandates — and NOT CloudFront/CF-Free (no purge) | | |
 | D41 | **Restricted regions** (e.g. China) | in-region HTML/media + China-native CDN vs standard | | 1 | **Standard** unless serving China/restricted markets → then in-region + Alicloud/Tencent/Baidu CDN | | |
-| D42 | **Dynamic/large content** | BYOM content-overlays vs authored in DA | | 1,5 | **Authored in DA** for normal volumes; **BYOM overlays** for large/dynamic sets (13k+ pages) — folder-mapping is deprecated | | |
+| D42 | **Dynamic/large content** | BYOM content-overlays vs authored in EW | | 1,5 | **Authored in EW** for normal volumes; **BYOM overlays** for large/dynamic sets (13k+ pages) — folder-mapping is deprecated | | |
 
 ### DT-C — Performance & Security posture
 _Non-functional guardrails. Drives Track 1 & 7._
@@ -434,12 +434,12 @@ _DAM + how structured content is stored/delivered. Drives Track 2 & 3 — ✅ **
 
 | # | Decision | Options | Gating? | Track | 💡 Emma's Rec (why) | Decision | Date |
 |---|----------|---------|:---:|:---:|---|---|---|
-| D13 | **⛔ Is AEM Assets the DAM?** | Yes (Tracks 2+3) / No | ⛔ | 2,3 | **No** for most — use DA media / existing DAM. Only Yes if client already runs AEM Assets or needs its governance | ✅ **Yes** — AEM Assets IS the DAM. Tracks 2 & 3 in scope. | 2026-08-13 |
+| D13 | **⛔ Is AEM Assets the DAM?** | Yes (Tracks 2+3) / No | ⛔ | 2,3 | **No** for most — use EW media / existing DAM. Only Yes if client already runs AEM Assets or needs its governance | ✅ **Yes** — AEM Assets IS the DAM. Tracks 2 & 3 in scope. | 2026-08-13 |
 | D14 | **Dynamic Media? / Content Hub?** | DM on/off · Content Hub in/out | | 2,3 | **DM off** by default (EDS native opt is fast; on only for smart-crop/advanced). **Content Hub: out** unless client asks | 🟡 **DM: TBD** — client undecided; DM-only tasks stay blocked (2.2.9). Content Hub: out unless asked. | |
-| D15 | **Structured content** | DA JSON-Schema vs AEM CF | | 1,2 | **DA JSON-Schema** — no AEM dependency, EDS-native. AEM CF only if AEM Assets already the store | | |
+| D15 | **Structured content** | EW JSON-Schema vs AEM CF | | 1,2 | **EW JSON-Schema** — no AEM dependency, EDS-native. AEM CF only if AEM Assets already the store | | |
 | D16 | **Asset delivery** | Media Bus vs keep-in-DAM-CDN | | 2,3 | **Media Bus (copy-in)** — same-origin, better LCP; only rewrite-in-place if migration volume forbids copy | | |
 | D17 | **Bridge mode** | author- vs delivery- prefix | | 3 | **delivery-** (published assets) for prod; author- only for pre-publish preview workflows | | |
-| D24 | **Multi-site manager** | DA-MSM vs AEM MSM | | 2 | **DA-MSM** if on DA/repoless; AEM MSM only if already AEMaaCS-based | | |
+| D24 | **Multi-site manager** | EW MSM vs AEM MSM | | 2 | **EW MSM** if on EW/repoless; AEM MSM only if already AEMaaCS-based | | |
 
 ### DT-E — Design & Front-End approach
 _Design system + advanced FE capabilities. Drives Track 1 (+4 for A-B)._
@@ -448,7 +448,7 @@ _Design system + advanced FE capabilities. Drives Track 1 (+4 for A-B)._
 |---|----------|---------|:---:|:---:|---|---|---|
 | D7 | **Design system source** | Figma / existing / new | | 1 | **Figma → EDS tokens** if a design system exists; else extract from current site during discovery | | |
 | D8 | **AEM Headless** | data-heavy only / not used | | 1,4 | **Not used** unless genuinely data-heavy views exist (keep it simple; EDS blocks + JSON cover most) | | |
-| D23 | **Personalization / A-B?** | Target · Experimentation | | 1,4 | **Experimentation on** (EDS-native, low lift); Target only if client owns it + wants deep personalization. _Target = DA.live "Send to Adobe Target" (Prepare menu) feature — see DT-A D34–D40; needs adobe-target config sheet_ | | |
+| D23 | **Personalization / A-B?** | Target · Experimentation | | 1,4 | **Experimentation on** (EDS-native, low lift); Target only if client owns it + wants deep personalization. _Target = Experience Workspace "Send to Adobe Target" (Prepare menu) feature — see DT-A D34–D40; needs adobe-target config sheet_ | | |
 
 ### DT-F — Integrations
 _Which external systems + who owns the APIs. Drives Track 4._

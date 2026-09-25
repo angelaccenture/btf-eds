@@ -31,7 +31,7 @@ _Goal: stand up AEMaaCS (author + publish) with the right access model. Mostly �
 | 5 | CI/CD pipelines (AEM code) | 2.1.7 | + Git repo access |
 | 6 | Permission model (two layers!) | 2.1.8–2.1.11 | IMS product profiles ≠ AEM-level groups (common mistake) |
 | 7 | Technical accounts / API creds | 2.1.12 | Adobe Developer Console + local dev token |
-| 8 | Dispatcher + DA connect env var | 2.1.13 · 2.1.14 | `ADOBE_PROVIDED_CLIENT_ID = darkalley` (enables DA connection) |
+| 8 | Dispatcher + EW connect env var | 2.1.13 · 2.1.14 | `ADOBE_PROVIDED_CLIENT_ID = darkalley` (enables the EW connection) |
 
 ### Deliverables (DoD)
 - [ ] AEMaaCS author + publish live (dev/stage/prod)
@@ -126,7 +126,7 @@ _Goal: approval/publish workflows, lifecycle automation, Creative Cloud tie-ins.
 | 4 | User group mgmt & permissions | 2.4.5 | — |
 | 5 | Adobe Asset Link (CC extension) | 2.4.6 | client IT installs CC extension |
 | 6 | Adobe I/O Events | 2.4.7 | asset event triggers |
-| 7 | MSM (only if bilingual/multi-site) | 2.4.2 | DA-MSM vs AEM MSM |
+| 7 | MSM (only if bilingual/multi-site) | 2.4.2 | EW MSM vs AEM MSM |
 
 ### Deliverables (DoD)
 - [ ] Approval/publish workflow live
@@ -146,13 +146,13 @@ _Goal: approval/publish workflows, lifecycle automation, Creative Cloud tie-ins.
 
 ## Task 5 — Wire the EDS ↔ Assets Bridge
 
-_Goal: DA.live-side config that lets EDS consume AEM Assets. No servers — config keys only.
+_Goal: Experience Workspace-side config that lets EDS consume AEM Assets. No servers — config keys only.
 This is the connection layer (Track 3). **Pre-req: Task 1 done + `darkalley` set + assets published.**_
 
 ### Sub-tasks (from sheet §3.1–3.7)
 | # | Sub-task | Sheet ID | Notes |
 |---|---|---|---|
-| 1 | Set `aem.repositoryId` in da.live/config | 3.1 | `author-`/`delivery-` prefix sets mode |
+| 1 | Set `aem.repositoryId` in the EW config (`da.live/config`) | 3.1 | `author-`/`delivery-` prefix sets mode |
 | 2 | Origin / basepath config | 3.2 | `aem.assets.prod.origin` · basepath |
 | 3 | Delivery options (link / DM / smartcrop) | 3.3 | DM keys only if D14=on |
 | 4 | Cloud-Manager technical account | 3.5 | read access to asset folders |
@@ -160,7 +160,7 @@ This is the connection layer (Track 3). **Pre-req: Task 1 done + `darkalley` set
 | 6 | Processing profiles for delivery | 3.7 | img 2000×2000 q100 · video MP4 · 20MB limit |
 
 ### Deliverables (DoD)
-- [ ] `da.live/config` keys set (mode = delivery- for prod)
+- [ ] EW config (`da.live/config`) keys set (mode = delivery- for prod)
 - [ ] Asset-selector working in Sidekick for authors
 - [ ] Technical account has read access to asset folders
 
@@ -177,7 +177,7 @@ This is the connection layer (Track 3). **Pre-req: Task 1 done + `darkalley` set
 
 ## Task 6 — Asset Delivery via API
 
-_Goal: EDS/DA renders published assets through the OpenAPI Delivery API — NOT legacy
+_Goal: EDS/EW renders published assets through the OpenAPI Delivery API — NOT legacy
 `/content/dam/` URLs. Decide the delivery model._
 
 ### Sub-tasks (from sheet §3.4, §2.3.4)
@@ -194,7 +194,7 @@ _Goal: EDS/DA renders published assets through the OpenAPI Delivery API — NOT 
 - [ ] LCP/perf verified for asset-heavy pages
 
 ### Decisions
-- **D16** asset delivery (Media Bus vs keep-in-DAM-CDN) · **D15** DA-vs-CF (if structured content)
+- **D16** asset delivery (Media Bus vs keep-in-DAM-CDN) · **D15** EW-vs-CF (if structured content)
 
 ### Requirements (inputs)
 - Task 5 bridge wired · sample published assets
@@ -207,12 +207,12 @@ _Goal: EDS/DA renders published assets through the OpenAPI Delivery API — NOT 
 ## Task 7 — Integrate into the Live Site
 
 _Goal: the "integrate later" moment — repoint the already-live EDS site's media from
-DA-hosted images to Assets-delivered URLs, verify, and cut over._
+EW-hosted images to Assets-delivered URLs, verify, and cut over._
 
 ### Sub-tasks
 | # | Sub-task | Sheet ID | Notes |
 |---|---|---|---|
-| 1 | Swap DA media → Assets-delivered URLs | (3.4 applied) | On the live MVP/site pages |
+| 1 | Swap EW media → Assets-delivered URLs | (3.4 applied) | On the live MVP/site pages |
 | 2 | Regression: rendering + responsive | 6.1.5 | VRT on affected pages |
 | 3 | Performance re-check | 6.1.9 · 1.8.1 | Lighthouse-100 / <100KB still holds |
 | 4 | External integrations from Assets | 2.4.8 | TMS / CDN, if in scope |
